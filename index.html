@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <h1>Test your knowledge!</h1>
+    <!-- <h1>Test your knowledge!</h1> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework 4: Javascript Quiz</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Javascript Quiz</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-    <section class="timescore">
-        <p>Timer:</p>
-        <p>Scores:</p>
-    </section>
-    <section class="solutions">
-        <p>Questions:</p>
-    </section>
-    <section>
-        <p>1:</p>
-        <p>2:</p>
-        <p>3:</p>
-        <p>4:</p>
-    </section>
-    <section class="buttons">
-        <button>option 1</button>
-        <button>option 2</button>
-        <button>option 3</button>
-        <button>option 4</button>
-    </section>
-    <script src="js/questions.js"></script>
-    <script src="js/quiz.js"></script>
+    <div>
+        <div class="timer" id="timer">
+            timer
+        </div>
+        <div class="score">
+            score : 0
+        </div>
+        <div class="container hide" >
+            <div id="question-container" >
+                <div id="question">Questions</div>
+                <div id="answer-buttons" class="btn-grid">
+                    <button class="btn" id="option-1">option 1</button>
+                    <button class="btn" id="option-2">option 2</button>
+                    <button class="btn" id="option-3">option 3</button>
+                    <button class="btn" id="option-4">option 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+            
+        </div>
+    </div>
+<script src="./js/questions.js"></script>
+<script src="./js/quiz.js"></script>
 </body>
+
 </html>

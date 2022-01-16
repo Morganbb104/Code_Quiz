@@ -1,28 +1,106 @@
-/* CSS Reset */
-* {
+*, *::before, *::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-/* header alignment */
-header{
-    text-align: center;
+    font-family: Gotham Rounded;
+  }
+
+.question{
+    align-content: center;
 }
 
-/* time and score */
-.timescore{
+:root {
+    --hue-neutral: 60;
+    --hue-wrong: 0;
+    --hue-correct: 15;
+}
+
+body{
+    --hue: var(--hue-neutral);
+    padding:0;
+    margin:20 ;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    font-size: 25;
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+    background-color:hsl(var(--hue), 100%, 20%) ;
 }
-.buttons{
+
+body.correct {
+    --hue: var(--hue-correct);
+  }
+
+body.wrong {
+  --hue: var(--hue-wrong);
+}
+.timer{
+ text-align: center;
+}
+
+.score{
+text-align: center;
+}
+.container {
     text-align: center;
-    margin-left: 15px;
-
+    margin: auto;
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
 }
 
-@media screen and(max-width:400px){
-
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
 }
+
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: rgb(36, 30, 30);
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: rgb(51, 161, 110);
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+    color: blueviolet;
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.hide {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
