@@ -138,7 +138,7 @@ const endGame = () => {
 // 5. end  
 
 startBtn.addEventListener('click',() => {
-    // sec();
+    sec = 50 
 
     timer();
     startGame()
