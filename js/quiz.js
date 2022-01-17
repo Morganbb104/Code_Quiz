@@ -27,18 +27,19 @@ let userAnswer;
 let questionCount = 0;
 let userScore = 0;
 var sec = 50;
+let checkAnswer = true
 
 
 
-function timer(){
-    var timer = setInterval(function(){
-        timerDiv.innerHTML=sec;
+function timer() {
+    var timer = setInterval(function () {
+        timerDiv.innerHTML = sec;
         sec--;
-        
+
         if (sec < 0) {
             clearInterval(timer);
-            timerDiv.innerText='Time'
-            
+            timerDiv.innerText = 'Time'
+
             endGame()   //game over time out         
         }
     }, 1000);
@@ -53,39 +54,94 @@ const startBtnFunction = () => {
 
 
 
-function startGame(){
+function startGame() {
 
 
     console.log("lastTimeScore" + localStorage.getItem('score'))
 
     userScore = 0;
+    scoreEl.innerText = `Score : ${userScore}`
     startBtn.classList.add('hide')
     containerEl.classList.remove('hide')
-    shuffleQuestion = questions.sort(()=> Math.random() -.5)
+    shuffleQuestion = questions.sort(() => Math.random() - .5)
 
-    
+
     questionCount = 0
 
     nextBtn.classList.remove('hide')
-    moveNextquestion()
+    checkAnswer = true
+    // moveNextquestion()
+
+    // for(let i = 0; i < questions.length; i++) {
+    //     const button = document.getElementById(`option-${i+1}`)
+    //     button.classList.remove('select')
+
+    //     clearStatusClass(button)
+    // }
 }
 
 
 
-function moveNextquestion(){
-    if(shuffleQuestion[questionCount].answer === userAnswer) {
-        console.log("yes")
-        userScore++
-    } else {
-        console.log("no")
+
+function moveNextquestion() {
+    console.log(checkAnswer)
+    const len = shuffleQuestion[questionCount].choices.length;
+
+    for (let i = 0; i < len; i++) {
+        const button = document.getElementById(`option-${i + 1}`)
+        button.classList.remove('select')
+
+        clearStatusClass(button)
     }
-    scoreEl.innerText = `Score : ${userScore}`
-    questionCount++
-    showQuestion(questions)
+
+    if (checkAnswer) {
+        if (shuffleQuestion[questionCount].answer === userAnswer) {
+            userScore++
+        }
+        scoreEl.innerText = `Score : ${userScore}`
+
+
+        for (let i = 0; i < len; i++) {
+            const button = document.getElementById(`option-${i + 1}`)
+            button.classList.remove('select')
+
+            // console.log(button.innerText)
+
+            if (button.innerText === shuffleQuestion[questionCount].answer) {
+                setStatusClass(button, true)
+            } else {
+                setStatusClass(button, false)
+            }
+        }
+
+        checkAnswer = false
+    } else {
+        questionCount++
+        showQuestion(questions)
+
+
+        for (let i = 0; i < len; i++) {
+            const button = document.getElementById(`option-${i + 1}`)
+            button.classList.remove('select')
+
+            clearStatusClass(button)
+        }
+
+        checkAnswer = true
+    }
+
+
+
+
+
+    /*
+        if next question
+        else check answer and show correct one
+    */
 }
 
-function showQuestion(questions){
-    if(questionCount > questions.length - 1) {
+function showQuestion(questions) {
+    if (questionCount > questions.length - 1) {
         endGame()
     }
 
@@ -102,24 +158,40 @@ function showQuestion(questions){
     // option4.innerText = questions[questionCount].choices[3]
 
     const len = shuffleQuestion[questionCount].choices.length;
-    for(let i = 0; i < len; i++) {
-        const button = document.getElementById(`option-${i+1}`)
+    for (let i = 0; i < len; i++) {
+        const button = document.getElementById(`option-${i + 1}`)
         button.innerText = shuffleQuestion[questionCount].choices[i];
-        button.addEventListener("click", () => {selectAnswer(`option-${i+1}`)});
+        button.addEventListener("click", () => { selectAnswer(`option-${i + 1}`) });
     }
 
 
 }
 
-function selectAnswer(answerEl){
-    userAnswer = document.querySelector(`#${answerEl}`).textContent
+function selectAnswer(answerEl) {
+    const selectEl = document.querySelector(`#${answerEl}`)
 
-    console.log(userAnswer)
+    const len = shuffleQuestion[questionCount].choices.length;
+    for (let i = 0; i < len; i++) {
+        const button = document.getElementById(`option-${i + 1}`)
+        button.classList.remove('select')
+    }
 
-    
+
+    if (checkAnswer) { selectEl.classList.add('select') }
+
+    userAnswer = selectEl.textContent
+
+
+
+    // console.log(userAnswer)
+
+
 
 }
-
+/**
+ *const endGame = function() {}
+ * 
+ */
 const endGame = () => {
     sec = 0
 
@@ -137,8 +209,8 @@ const endGame = () => {
 // 4. localstorage and show scores
 // 5. end  
 
-startBtn.addEventListener('click',() => {
-    sec = 50 
+startBtn.addEventListener('click', () => {
+    sec = 50 // we end the game and start it again, set time as the beginning in order to restart
 
     timer();
     startGame()
@@ -146,3 +218,17 @@ startBtn.addEventListener('click',() => {
 })
 nextBtn.addEventListener('click', moveNextquestion)
 
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
