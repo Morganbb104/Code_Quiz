@@ -9,14 +9,20 @@
 // how to display js code on html
 console.log(questions);
 
-// var startButton =document.querySelector(start-btn);
+
+// 1. set timer
+// 2. shuffling questions
+// 2. display questions by array
+// 3. count right and wrong scores
+// 4. localstorage and show scores
+// 5. end 
 
 // Timer
 const timerDiv = document.getElementById('timer')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonElement = document.getElementById('answer-buttons')
-var timerEl = document.getElementById(".countdown");
+var   timerEl = document.getElementById(".countdown");
 const nextBtn = document.querySelector('#next-btn')
 const startBtn = document.querySelector('#start-btn');
 const scoreEl = document.querySelector('.score')
@@ -30,7 +36,7 @@ var sec = 50;
 let checkAnswer = true
 
 
-
+//timer, set up a given time and countdown, and end game
 function timer() {
     var timer = setInterval(function () {
         timerDiv.innerHTML = sec;
@@ -59,36 +65,28 @@ function startGame() {
 
     console.log("lastTimeScore" + localStorage.getItem('score'))
 
-    userScore = 0;
+    userScore = 0; // start with score 0 in the game even restart it.
     scoreEl.innerText = `Score : ${userScore}`
-    startBtn.classList.add('hide')
-    containerEl.classList.remove('hide')
-    shuffleQuestion = questions.sort(() => Math.random() - .5)
+    startBtn.classList.add('hide') // hide startBtn
+    containerEl.classList.remove('hide') // open html container contents
+    shuffleQuestion = questions.sort(() => Math.random() - .5) //randomly shuffling questions array
 
 
     questionCount = 0
 
     nextBtn.classList.remove('hide')
     checkAnswer = true
-    // moveNextquestion()
-
-    // for(let i = 0; i < questions.length; i++) {
-    //     const button = document.getElementById(`option-${i+1}`)
-    //     button.classList.remove('select')
-
-    //     clearStatusClass(button)
-    // }
-}
 
 
 
 
+// Next movement action
 function moveNextquestion() {
     console.log(checkAnswer)
     const len = shuffleQuestion[questionCount].choices.length;
 
     for (let i = 0; i < len; i++) {
-        const button = document.getElementById(`option-${i + 1}`)
+        const button = document.getElementById(`option-${i + 1}`) // link Btn options
         button.classList.remove('select')
 
         clearStatusClass(button)
@@ -193,21 +191,16 @@ function selectAnswer(answerEl) {
  * 
  */
 const endGame = () => {
-    sec = 0
+    sec = 0 // make timer up
 
-    containerEl.classList.add('hide')
+    containerEl.classList.add('hide') //hide container in html
     startBtn.classList.remove('hide')
     nextBtn.classList.add('hide')
 
     localStorage.setItem('score', userScore)
 }
 
-// 1. set timer
-// 2. shuffling questions
-// 2. display questions by array
-// 3. count right and wrong scores
-// 4. localstorage and show scores
-// 5. end  
+ 
 
 startBtn.addEventListener('click', () => {
     sec = 50 // we end the game and start it again, set time as the beginning in order to restart
