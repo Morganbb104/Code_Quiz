@@ -140,4 +140,7 @@ text-shadow: 4px 4px 4px #aaa;
     body {
       background-color: lightblue;
     }
+    .container{
+        text-align: center;
+    }
   }
