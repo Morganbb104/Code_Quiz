@@ -12,9 +12,9 @@ https://morganbb104.github.io/Code_Quiz/
 
 # how to play?
 
-1. Click *Start* button
+1. Click **Start** button
 
-2. Choose the option you think that is right,the chosen option will turn into blue,then click *Next*.
+2. Choose the option you think that is right,the chosen option will turn into blue,then click **Next**.
 
 3. The wrong answers will be red, correct answer will be green.
 
