@@ -8,7 +8,7 @@ In the end, users will see thier own scores and recommended to submit thier name
 https://morganbb104.github.io/Code_Quiz/
 
 # Screenshot
-![Quiz code](assets/images/quiz-code-game.jpg)
+![Quiz code](./assets/images/quiz-code-game.jpg)
 
 # how to play?
 
