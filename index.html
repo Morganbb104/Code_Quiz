@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript Quiz</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Tangerine">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascript Quiz</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    </head>
 
-<body>
-    <div>
-        <div class="Title" id="Title">Test yourself Javascript Quiz</div>
-        <div class="timer" id="timer">
-            You have 30 seconds
-        </div>
-        <div class="score">
-            score : 0
-        </div>
-        <div class="container hide" >
-            <div class="question-container" id="question-container" >
-                <div id="question">Questions</div>
-                <div id="answer-buttons" class="btn-grid">
-                    <button class="btn" id="option-1">option 1</button>
-                    <button class="btn" id="option-2">option 2</button>
-                    <button class="btn" id="option-3">option 3</button>
-                    <button class="btn" id="option-4">option 4</button>
+    <body>
+        <div>
+            <div class="high-score hide">Highest Score: <span id="high-score-span"></span></div>
+            <div class="Title" id="Title">Test yourself Javascript Quiz</div>
+            <div class="timer" id="timer">
+                You have 30 seconds
+            </div>
+            <div class="score">
+                score : 0
+            </div>
+            <div class="container hide">
+                <div class="question-container" id="question-container">
+                    <div id="question">Questions</div>
+                    <div id="answer-buttons" class="btn-grid">
+                        <button class="btn" id="option-1">option 1</button>
+                        <button class="btn" id="option-2">option 2</button>
+                        <button class="btn" id="option-3">option 3</button>
+                        <button class="btn" id="option-4">option 4</button>
+                    </div>
                 </div>
             </div>
+            <!-- local storage -->
+            <div class="text-high-score hide">Write your name:<input class="user"></input>
+                <div id="Post-quiz" class="post-quiz">
+                    <button id='submit-btn' class="a1 btn submit">Submit</button>
+                    <button id="restart" class="restartbtn btn  hide">Restart</button>
+                </div>
+            </div>
+             <!-- local storage -->
+
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start</button>
+                <button id="next-btn" class="next-btn btn hide">Next</button>
+                <button id="check-btn" class="check-btn btn hide">Check</button>
+
+            </div>
         </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">Start</button>
-            <button id="next-btn" class="next-btn btn hide">Next</button>
-            <button id="check-btn" class="check-btn btn hide">Check</button>
-            
-        </div>
-    </div>
-<script src="./js/questions.js"></script>
-<script src="./js/quiz.js"></script>
-</body>
+        <script src="./js/questions.js"></script>
+        <script src="./js/quiz.js"></script>
+    </body>
 
 </html>

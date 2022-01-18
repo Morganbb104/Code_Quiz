@@ -38,7 +38,7 @@ body.wrong {
   --hue: var(--hue-wrong);
 }
 
-.Title{
+.Title, .high-score, .text-high-score{
     text-align: center;
     font-family: 'Tangerine', serif;
     font-size: 48px;
@@ -111,10 +111,17 @@ text-shadow: 4px 4px 4px #aaa;
     color: blueviolet;
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .restartbtn, .submit {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
+    text-align: center;
+}
+
+.post-quiz {
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .controls {

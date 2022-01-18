@@ -27,12 +27,16 @@ const nextBtn = document.querySelector('#next-btn')
 const startBtn = document.querySelector('#start-btn');
 const scoreEl = document.querySelector('.score')
 const containerEl = document.querySelector('.container')
+var highScoreEl = document.querySelector(".high-score");
+const highScoreSpanEl = document.querySelector('#high-score-span')
+const textHighScoreEl = document.querySelector('.text-high-score')
+let restartEl = document.querySelector('#restart')
+var userEl = document.querySelector(".user");
+const submitBtnEl = document.querySelector('#submit-btn')
 
-var shuffleQuestion
-let userAnswer;
+var shuffleQuestion, userAnswer, sec
 let questionCount = 0;
 let userScore = 0;
-var sec = 30;
 let checkAnswer = true
 
 
@@ -50,18 +54,11 @@ function timer() {
         }
     }, 1000);
 
-    //
 }
-const startBtnFunction = () => {
-    console.log('start button ')
-}
-
-
 
 
 
 function startGame() {
-
 
     console.log("lastTimeScore" + localStorage.getItem('score'))
 
@@ -69,6 +66,9 @@ function startGame() {
     scoreEl.innerText = `Score : ${userScore}`
     startBtn.classList.add('hide') // hide startBtn
     containerEl.classList.remove('hide') // open html container contents
+    textHighScoreEl.classList.add('hide')
+    highScoreEl.classList.add('hide')
+    restartEl.classList.add('hide')
     shuffleQuestion = questions.sort(() => Math.random() - .5) //randomly shuffling questions array
 
 
@@ -127,10 +127,6 @@ function moveNextquestion() {
 
         checkAnswer = true
     }
-
-
-
-
 
     /*
         if next question
@@ -197,9 +193,23 @@ const endGame = () => {
     startBtn.classList.remove('hide')// use the classList API to remove classes
     nextBtn.classList.add('hide')//// use the classList API to add classes
 
-    localStorage.setItem('score', userScore)
+
+
+    highScoreEl.classList.remove('hide')
+    textHighScoreEl.classList.remove('hide')
+    restartEl.classList.remove('hide')
+    startBtn.classList.add('hide')
+    HighScore()
+
 }
 
+restartEl.addEventListener('click', () => {
+    sec = 30 // we end the game and start it again, set time as the beginning in order to restart
+
+    timer();
+    startGame()
+    showQuestion(shuffleQuestion);
+})
 
 
 startBtn.addEventListener('click', () => {
@@ -225,3 +235,41 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+
+
+
+
+// set local storage
+
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+function postQuiz() {
+
+
+    const userName = userEl.value
+
+    let userScoreObj = {
+        score: userScore,
+        name: userName
+    }
+
+    highScores.push(userScoreObj)
+    highScores.sort((a, b) => b.score - a.score)
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+    alert("score submit!");
+}
+
+
+//get local storage and display
+function HighScore() {
+
+    highScores.sort((a, b) => b.score - a.score)
+
+    highScoreSpanEl.innerHTML = highScores[0].name + "/" + highScores[0].score;
+}
+
+submitBtnEl.addEventListener('click', () => {
+    console.log('submit button')
+    postQuiz()
+
+})
