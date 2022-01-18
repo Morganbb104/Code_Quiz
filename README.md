@@ -9,6 +9,15 @@ https://morganbb104.github.io/Code_Quiz/
 
 # how to play?
 
+1. Click *Start* button
+
+2. Choose the option you think that is right,the chosen option will turn into blue,then click *Next*.
+
+3. The wrong answers will be red, correct answer will be green.
+
+4. While you complete the final question, you can submit your Name and see the highest scores in your personal record.
+
+5. Your game will be ended while timer up.
 
 
 
