@@ -1,11 +1,13 @@
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: Gotham Rounded;
+    font-family: 'Poppins', sans-serif;
   }
 
 .question{
     align-content: center;
 }
+
+
 
 :root {
     --hue-neutral: 60;
@@ -23,7 +25,10 @@ body{
     justify-content: center;
     align-items: center;
     background-color:hsl(var(--hue), 100%, 20%) ;
+    
 }
+
+
 
 body.correct {
     --hue: var(--hue-correct);
@@ -32,12 +37,25 @@ body.correct {
 body.wrong {
   --hue: var(--hue-wrong);
 }
+
+.Title{
+    text-align: center;
+    font-family: 'Tangerine', serif;
+    font-size: 48px;
+    text-shadow: 4px 4px 4px #aaa;
+}
 .timer{
  text-align: center;
+ font-family: 'Tangerine', serif;
+ font-size: 38px;
+ text-shadow: 4px 4px 4px #aaa;
 }
 
 .score{
 text-align: center;
+font-family: 'Tangerine', serif;
+font-size: 38px;
+text-shadow: 4px 4px 4px #aaa;
 }
 .container {
     text-align: center;
@@ -48,7 +66,15 @@ text-align: center;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+
 }
+
+.question-container{
+    font-family: 'Tangerine', serif;
+    font-size: 38px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
 
 .btn-grid {
     display: grid;
@@ -58,7 +84,7 @@ text-align: center;
 }
 
 .select {
-    background-color: blue !important;
+    background-color: rgb(141, 171, 238) !important;
 }
 
 .btn {
@@ -77,7 +103,7 @@ text-align: center;
 
 .btn.correct {
     --hue: var(--hue-correct);
-    color: rgb(51, 161, 110);
+    color: rgb(6, 128, 71);
 }
 
 .btn.wrong {

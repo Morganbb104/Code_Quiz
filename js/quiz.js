@@ -22,7 +22,7 @@ const timerDiv = document.getElementById('timer')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonElement = document.getElementById('answer-buttons')
-var   timerEl = document.getElementById(".countdown");
+var timerEl = document.getElementById(".countdown");
 const nextBtn = document.querySelector('#next-btn')
 const startBtn = document.querySelector('#start-btn');
 const scoreEl = document.querySelector('.score')
@@ -32,7 +32,7 @@ var shuffleQuestion
 let userAnswer;
 let questionCount = 0;
 let userScore = 0;
-var sec = 50;
+var sec = 30;
 let checkAnswer = true
 
 
@@ -77,7 +77,7 @@ function startGame() {
     nextBtn.classList.remove('hide')
     checkAnswer = true
 
-
+}
 
 
 // Next movement action
@@ -194,16 +194,16 @@ const endGame = () => {
     sec = 0 // make timer up
 
     containerEl.classList.add('hide') //hide container in html
-    startBtn.classList.remove('hide')
-    nextBtn.classList.add('hide')
+    startBtn.classList.remove('hide')// use the classList API to remove classes
+    nextBtn.classList.add('hide')//// use the classList API to add classes
 
     localStorage.setItem('score', userScore)
 }
 
- 
+
 
 startBtn.addEventListener('click', () => {
-    sec = 50 // we end the game and start it again, set time as the beginning in order to restart
+    sec = 30 // we end the game and start it again, set time as the beginning in order to restart
 
     timer();
     startGame()
