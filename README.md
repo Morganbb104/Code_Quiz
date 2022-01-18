@@ -7,6 +7,9 @@ In the end, users will see thier own scores and recommended to submit thier name
 # live link
 https://morganbb104.github.io/Code_Quiz/
 
+# Screenshot
+![Quiz code](assets/images/quiz-code-game.jpg)
+
 # how to play?
 
 1. Click *Start* button
